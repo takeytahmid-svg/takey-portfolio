@@ -1,0 +1,35 @@
+[
+  {
+    "id": "1",
+    "title": "Why Your Meta Ads Are in 'Learning Limited' (And How to Fix It)",
+    "slug": "meta-ads-learning-limited-fix",
+    "date": "2026-04-28",
+    "category": "Meta Ads",
+    "readTime": "5 min read",
+    "excerpt": "Learning Limited kills more campaigns than bad creatives ever will. Here's exactly what causes it and the 3-step fix that works every time.",
+    "cover": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+    "content": "If your campaign is stuck in Learning Limited, Meta is telling you one thing: it cannot get 50 optimization events per week. That's the threshold. Under 50 results per week, the algorithm stays unstable and your CPL stays unpredictable.\n\nThe 3 most common causes are a budget that's too low, a cost cap that's too aggressive, or an audience that's too narrow. Meta needs room to find your best buyers. If you've constrained it on all three fronts, it simply won't.\n\nHere's the fix. First, remove any cost cap entirely for 7 days. Let Meta spend freely to hit that 50-result threshold. Second, consolidate your ad sets — if you have 6 running simultaneously, combine them into 2 or 3 so budget concentrates. Third, broaden your audience. A 200,000-person audience in Bangladesh is not big enough for Meta to learn from efficiently.\n\nOnce you hit 50 results in a week, the algorithm stabilises. Then you can reintroduce a cost cap gradually."
+  },
+  {
+    "id": "2",
+    "title": "CAPI vs Pixel: What's Actually Different and Why You Need Both",
+    "slug": "capi-vs-pixel-explained",
+    "date": "2026-04-15",
+    "category": "Tracking",
+    "readTime": "7 min read",
+    "excerpt": "iOS 14 didn't kill tracking — it killed browser-only tracking. Here's how CAPI fills the gap and why running both is non-negotiable in 2026.",
+    "cover": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    "content": "The Meta Pixel fires from your visitor's browser. That sounds fine — until you realise that 30-40% of your audience uses iOS with tracking protection, ad blockers, or strict browser privacy settings. Every one of those visitors is invisible to your Pixel.\n\nCAPI (Conversions API) fires from your server. It doesn't care about the browser, iOS settings, or ad blockers. It sends data directly to Meta's servers. That's the core difference.\n\nRunning both gives you the most complete picture. The Pixel catches what it can from the browser. CAPI catches the rest from the server. Together, your match rate — the percentage of events Meta can link to a real user — goes from around 40-60% to 70-85%.\n\nThe practical impact: Meta has a better signal to find more people who look like your converters. Better signal equals lower CPL. I've seen CPL drop 20-30% just from adding CAPI to existing campaigns that were Pixel-only."
+  },
+  {
+    "id": "3",
+    "title": "How I Cut CPL by 91% — The Exact Framework I Used",
+    "slug": "91-percent-cpl-reduction-framework",
+    "date": "2026-03-30",
+    "category": "Case Study",
+    "readTime": "9 min read",
+    "excerpt": "From $2.00 to $0.18 per lead on a $78,000+ budget. Not a fluke — a systematic approach that took 6 months to build.",
+    "cover": "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80",
+    "content": "The 91% CPL reduction at OnnoRokom EdTech didn't happen in one campaign. It was 6 months of systematic testing, killing losers fast, and doubling down on winners.\n\nThe framework had four stages. Stage one was offer clarity — we spent 3 weeks rewriting the offer before touching audience or creative. Most agencies skip this. Most agencies get mediocre results.\n\nStage two was audience architecture. We mapped three distinct audience types: students aged 18-24 looking for job skills, professionals aged 25-35 looking for career advancement, and parents aged 35-50 looking to upskill their children. Each got completely different messaging.\n\nStage three was creative velocity. We tested a new hook every 10 days. Not new ad, not new campaign — new hook. The image often stayed the same. We were testing the angle, not the visual.\n\nStage four was ruthless optimisation. Any ad set spending more than ৳500 with zero leads got paused. No emotion. No 'let's give it one more day.' The data said kill it. We killed it.\n\nThe result was $2.00 CPL becoming $0.18 CPL. Same audience. Same platform. Different execution."
+  }
+]
