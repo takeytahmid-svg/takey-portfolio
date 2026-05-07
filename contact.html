@@ -63,6 +63,11 @@
     .form-note{font-size:0.78rem;color:var(--muted)}
     .btn-submit{background:var(--accent);color:#fff;border:none;padding:1rem 2.5rem;border-radius:100px;font-family:var(--fh);font-size:1.1rem;letter-spacing:0.05em;cursor:pointer;transition:all 0.2s}
     .btn-submit:hover{background:var(--accent2);transform:translateY(-2px)}
+    .btn-submit:disabled{opacity:0.6;cursor:not-allowed;transform:none}
+    .success-state{display:none;text-align:center;padding:4rem 2rem;border:1px solid rgba(34,197,94,0.2);border-radius:16px;background:rgba(34,197,94,0.04)}
+    .success-icon{font-size:3rem;margin-bottom:1rem}
+    .success-title{font-family:var(--fh);font-size:2.5rem;letter-spacing:0.03em;color:#22C55E;margin-bottom:0.8rem}
+    .success-msg{color:var(--muted);font-size:0.92rem;line-height:1.7;font-weight:300}
     footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 5rem;display:flex;align-items:center;justify-content:space-between}
     .footer-logo{font-family:var(--fh);font-size:1.4rem;letter-spacing:0.05em;color:var(--cream);text-decoration:none}
     .footer-logo span{color:var(--accent)}
@@ -117,47 +122,15 @@
         <div class="form-sub">Fill this out. I'll reply within 24 hours with honest, specific feedback.</div>
       </div>
 
-      <!-- 
-        HOW THIS FORM WORKS ON NETLIFY:
-        1. data-netlify="true" tells Netlify to detect and handle this form
-        2. The hidden input name="form-name" is required by Netlify
-        3. data-netlify-honeypot catches bots silently
-        4. After submit, Netlify redirects to /thank-you.html (see action attribute)
-        5. NO JavaScript needed — Netlify handles everything server-side
-        
-        TO ENABLE EMAIL NOTIFICATIONS:
-        Netlify dashboard → Forms → consultation → Form notifications → Add notification → Email
-      -->
-      <form
-        class="contact-form"
-        name="consultation"
-        method="POST"
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
-        action="/thank-you.html"
-      >
+      <form class="contact-form" id="contactForm" name="consultation" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="consultation" />
-        <input type="hidden" name="next" value="/thank-you.html" />
         <div style="display:none;"><input name="bot-field" /></div>
-
         <div class="form-row">
-          <div class="form-group">
-            <label for="fname">First Name <span class="req">*</span></label>
-            <input type="text" id="fname" name="first_name" placeholder="Your first name" required />
-          </div>
-          <div class="form-group">
-            <label for="lname">Last Name <span class="req">*</span></label>
-            <input type="text" id="lname" name="last_name" placeholder="Your last name" required />
-          </div>
+          <div class="form-group"><label for="fname">First Name <span class="req">*</span></label><input type="text" id="fname" name="first_name" placeholder="Your first name" required /></div>
+          <div class="form-group"><label for="lname">Last Name <span class="req">*</span></label><input type="text" id="lname" name="last_name" placeholder="Your last name" required /></div>
         </div>
-        <div class="form-group">
-          <label for="email">Email Address <span class="req">*</span></label>
-          <input type="email" id="email" name="email" placeholder="you@company.com" required />
-        </div>
-        <div class="form-group">
-          <label for="business">Business / Brand Name</label>
-          <input type="text" id="business" name="business" placeholder="What's your business called?" />
-        </div>
+        <div class="form-group"><label for="email">Email Address <span class="req">*</span></label><input type="email" id="email" name="email" placeholder="you@company.com" required /></div>
+        <div class="form-group"><label for="business">Business / Brand Name</label><input type="text" id="business" name="business" placeholder="What's your business called?" /></div>
         <div class="form-group">
           <label for="service">Service You're Interested In <span class="req">*</span></label>
           <select id="service" name="service" required>
@@ -181,28 +154,61 @@
             <option value="500k-plus">৳500,000+/month</option>
           </select>
         </div>
-        <div class="form-group">
-          <label for="message">Tell Me About Your Situation <span class="req">*</span></label>
-          <textarea id="message" name="message" placeholder="What are you running now? What's not working? What's your goal?" required></textarea>
-        </div>
+        <div class="form-group"><label for="message">Tell Me About Your Situation <span class="req">*</span></label><textarea id="message" name="message" placeholder="What are you running now? What's not working? What's your goal?" required></textarea></div>
         <div class="form-footer">
           <span class="form-note">Free consultation. No commitment.</span>
-          <button type="submit" class="btn-submit">SEND MESSAGE →</button>
+          <button type="submit" class="btn-submit" id="submitBtn">SEND MESSAGE →</button>
         </div>
       </form>
+
+      <div class="success-state" id="successState">
+        <div class="success-icon">✅</div>
+        <div class="success-title">MESSAGE RECEIVED</div>
+        <p class="success-msg">I'll review your situation and reply within 24 hours with honest, specific feedback. Check your inbox.</p>
+      </div>
     </div>
   </div>
 
   <footer>
     <a href="index.html" class="footer-logo">TAKEY<span>.</span></a>
     <ul class="footer-nav">
-      <li><a href="index.html">About</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="index.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li>
     </ul>
     <div class="footer-copy">© 2026 Takey Tahmid</div>
   </footer>
 
+  <script>
+    const form = document.getElementById('contactForm');
+    const success = document.getElementById('successState');
+    const btn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      btn.disabled = true;
+      btn.textContent = 'SENDING...';
+
+      const data = new URLSearchParams(new FormData(form)).toString();
+
+      try {
+        const res = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: data
+        });
+
+        if (res.ok) {
+          form.style.display = 'none';
+          success.style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          throw new Error('Server error');
+        }
+      } catch (err) {
+        // fallback — direct submit
+        form.removeEventListener('submit', arguments.callee);
+        form.submit();
+      }
+    });
+  </script>
 </body>
 </html>
