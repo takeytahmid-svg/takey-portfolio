@@ -2,7 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Services — Takey Tahmid</title>
+  <title>Services — Takey Tahmid | Meta Ads, CAPI Setup, Campaign Audit</title>
+  <meta name="description" content="Meta Ads management, Conversions API (CAPI) setup, social media management, and campaign audits by Takey Tahmid. Based in Dhaka." />
+  <meta property="og:title" content="Services — Takey Tahmid" />
+  <meta property="og:description" content="Meta Ads management, CAPI setup, social media management, and campaign audits. Book a free consultation." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://takey-tahmid.netlify.app/services" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Services — Takey Tahmid" />
+  <meta name="twitter:description" content="Meta Ads management, CAPI setup, social media management, and campaign audits." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700&display=swap" rel="stylesheet" />
@@ -19,6 +27,17 @@
     .nav-links a:hover,.nav-links a.active{color:var(--text)}
     .nav-cta{background:var(--accent)!important;color:#fff!important;padding:0.55rem 1.5rem!important;border-radius:100px!important;font-weight:600!important}
     .nav-cta:hover{background:var(--accent2)!important}
+    /* HAMBURGER */
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;z-index:300}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--cream);border-radius:2px;transition:all 0.3s}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .mobile-menu{display:none;position:fixed;inset:0;background:rgba(10,10,10,0.98);z-index:250;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;backdrop-filter:blur(20px)}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{font-family:var(--fh);font-size:clamp(2rem,8vw,3.5rem);letter-spacing:0.05em;color:var(--cream);text-decoration:none;transition:color 0.2s}
+    .mobile-menu a:hover{color:var(--accent)}
+    .mobile-menu .mob-cta{background:var(--accent);color:#fff!important;padding:0.7rem 2.2rem;border-radius:100px}
     .page-header{padding:9rem 5rem 5rem;background:var(--bg2);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
     .page-header::after{content:'SERVICES';position:absolute;right:-0.05em;bottom:-0.1em;font-family:var(--fh);font-size:clamp(6rem,16vw,20rem);color:transparent;-webkit-text-stroke:1px rgba(255,255,255,0.04);line-height:1;pointer-events:none;white-space:nowrap}
     .section-label{display:inline-flex;align-items:center;gap:0.6rem;font-size:0.75rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
@@ -69,7 +88,22 @@
     .footer-nav a{color:var(--muted);text-decoration:none;font-size:0.85rem;transition:color 0.2s}
     .footer-nav a:hover{color:var(--text)}
     .footer-copy{font-size:0.8rem;color:var(--muted)}
-    @media(max-width:960px){nav{padding:1rem 1.5rem}.nav-links{display:none}.page-header{padding:7rem 1.5rem 3rem}.page-header::after{display:none}.services-main{padding:3rem 1.5rem 5rem}.svc-row{grid-template-columns:1fr;gap:1rem}.process-section{padding:4rem 1.5rem}.process-grid{grid-template-columns:1fr 1fr;gap:1.5rem}.faq-section{padding:4rem 1.5rem}.cta-band{grid-template-columns:1fr;padding:3rem 1.5rem;text-align:center}.cta-band::before{display:none}.cta-action{display:flex;justify-content:center}footer{flex-direction:column;gap:1.2rem;text-align:center;padding:2rem 1.5rem}}
+    @media(max-width:960px){
+      nav{padding:1rem 1.5rem}
+      .hamburger{display:flex}
+      .nav-links{display:none!important}
+      .page-header{padding:7rem 1.5rem 3rem}
+      .page-header::after{display:none}
+      .services-main{padding:3rem 1.5rem 5rem}
+      .svc-row{grid-template-columns:1fr;gap:1rem}
+      .process-section{padding:4rem 1.5rem}
+      .process-grid{grid-template-columns:1fr 1fr;gap:1.5rem}
+      .faq-section{padding:4rem 1.5rem}
+      .cta-band{grid-template-columns:1fr;padding:3rem 1.5rem;text-align:center}
+      .cta-band::before{display:none}
+      .cta-action{display:flex;justify-content:center}
+      footer{flex-direction:column;gap:1.2rem;text-align:center;padding:2rem 1.5rem}
+    }
   </style>
 </head>
 <body>
@@ -81,7 +115,17 @@
       <li><a href="blog.html">Blog</a></li>
       <li><a href="contact.html" class="nav-cta">Work With Me</a></li>
     </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" onclick="closeMenu()">About</a>
+    <a href="services.html" onclick="closeMenu()">Services</a>
+    <a href="blog.html" onclick="closeMenu()">Blog</a>
+    <a href="contact.html" class="mob-cta" onclick="closeMenu()">Work With Me</a>
+  </div>
 
   <div class="page-header">
     <div class="section-label">What I Offer</div>
@@ -96,48 +140,37 @@
         <div class="svc-row-icon">⚡</div>
         <div class="svc-row-name">META ADS MANAGEMENT</div>
         <p class="svc-row-desc">Full-service campaign management. Strategy, audience research, creative direction, A/B testing, optimisation, and weekly reporting. I've managed $78K+ and achieved a 91% CPL reduction.</p>
-        <div class="svc-tags">
-          <span class="svc-tag">Campaign Architecture</span><span class="svc-tag">Audience Research</span><span class="svc-tag">Creative Direction</span><span class="svc-tag">A/B Testing</span><span class="svc-tag">Weekly Reports</span><span class="svc-tag">Scaling Strategy</span>
-        </div>
+        <div class="svc-tags"><span class="svc-tag">Campaign Architecture</span><span class="svc-tag">Audience Research</span><span class="svc-tag">Creative Direction</span><span class="svc-tag">A/B Testing</span><span class="svc-tag">Weekly Reports</span><span class="svc-tag">Scaling Strategy</span></div>
       </div>
       <a href="contact.html" class="btn-fill">Get Started ↗</a>
     </div>
-
     <div class="svc-row">
       <div class="svc-row-num">02</div>
       <div>
         <div class="svc-row-icon">📱</div>
         <div class="svc-row-name">SOCIAL MEDIA MANAGEMENT</div>
         <p class="svc-row-desc">Content strategy, scheduling, and engagement management aligned with your paid campaigns. Organic and paid working together — not against each other.</p>
-        <div class="svc-tags">
-          <span class="svc-tag">Content Calendar</span><span class="svc-tag">Post Creation</span><span class="svc-tag">Scheduling</span><span class="svc-tag">Community Engagement</span><span class="svc-tag">Brand Voice</span>
-        </div>
+        <div class="svc-tags"><span class="svc-tag">Content Calendar</span><span class="svc-tag">Post Creation</span><span class="svc-tag">Scheduling</span><span class="svc-tag">Community Engagement</span><span class="svc-tag">Brand Voice</span></div>
       </div>
       <a href="contact.html" class="btn-ghost">Enquire →</a>
     </div>
-
     <div class="svc-row">
       <div class="svc-row-num">03</div>
       <div>
         <div class="svc-row-icon">🔗</div>
         <div class="svc-row-name">CONVERSIONS API (CAPI) SETUP</div>
         <p class="svc-row-desc">iOS 14 and ad blockers are silently destroying your Pixel data. CAPI sends events server-side — directly to Meta. Better signal means lower CPL. I built a custom CAPI via Google Apps Script. No developer needed.</p>
-        <div class="svc-tags">
-          <span class="svc-tag">Pixel + CAPI Dual Setup</span><span class="svc-tag">Event Deduplication</span><span class="svc-tag">Google Sheets Integration</span><span class="svc-tag">Match Rate Optimisation</span>
-        </div>
+        <div class="svc-tags"><span class="svc-tag">Pixel + CAPI Dual Setup</span><span class="svc-tag">Event Deduplication</span><span class="svc-tag">Google Sheets Integration</span><span class="svc-tag">Match Rate Optimisation</span></div>
       </div>
       <a href="contact.html" class="btn-ghost">Enquire →</a>
     </div>
-
     <div class="svc-row">
       <div class="svc-row-num">04</div>
       <div>
         <div class="svc-row-icon">📊</div>
         <div class="svc-row-name">CAMPAIGN AUDIT & CONSULTATION</div>
         <p class="svc-row-desc">Your ads are running but something's off. I dig into your Ads Manager, find what's actually broken — offer, creative, audience, or structure — and give you a written action plan with specific next steps.</p>
-        <div class="svc-tags">
-          <span class="svc-tag">Full Ads Manager Review</span><span class="svc-tag">Audience Diagnosis</span><span class="svc-tag">Creative Analysis</span><span class="svc-tag">Written Action Plan</span>
-        </div>
+        <div class="svc-tags"><span class="svc-tag">Full Ads Manager Review</span><span class="svc-tag">Audience Diagnosis</span><span class="svc-tag">Creative Analysis</span><span class="svc-tag">Written Action Plan</span></div>
       </div>
       <a href="contact.html" class="btn-ghost">Book Audit →</a>
     </div>
@@ -180,6 +213,14 @@
   </footer>
 
   <script>
+    const hamburger=document.getElementById('hamburger');
+    const mobileMenu=document.getElementById('mobileMenu');
+    function closeMenu(){hamburger.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow='';}
+    hamburger.addEventListener('click',()=>{
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';
+    });
     document.querySelectorAll('.faq-item').forEach(item=>{
       item.querySelector('.faq-q').addEventListener('click',()=>{
         const open=item.classList.contains('open');

@@ -4,6 +4,13 @@
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact — Takey Tahmid | Book a Free Consultation</title>
   <meta name="description" content="Book a free consultation with Takey Tahmid. Meta Ads management, CAPI setup, campaign audits. Reply within 24 hours." />
+  <meta property="og:title" content="Contact — Takey Tahmid" />
+  <meta property="og:description" content="Book a free consultation. Meta Ads management, CAPI setup, campaign audits. Reply within 24 hours." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://takey-tahmid.netlify.app/contact" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Contact — Takey Tahmid" />
+  <meta name="twitter:description" content="Book a free consultation. Reply within 24 hours." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700&display=swap" rel="stylesheet" />
@@ -76,6 +83,19 @@
     .footer-nav a:hover{color:var(--text)}
     .footer-copy{font-size:0.8rem;color:var(--muted)}
     @media(max-width:960px){nav{padding:1rem 1.5rem}.nav-links{display:none}.contact-layout{grid-template-columns:1fr}.contact-left{padding:5rem 1.5rem 3rem;border-right:none;border-bottom:1px solid var(--border)}.contact-left::after{display:none}.contact-right{padding:3rem 1.5rem 5rem}.form-row{grid-template-columns:1fr}footer{flex-direction:column;gap:1.2rem;text-align:center;padding:2rem 1.5rem}}
+
+    /* HAMBURGER MENU */
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;z-index:300}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--cream);border-radius:2px;transition:all 0.3s}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .mobile-menu{display:none;position:fixed;inset:0;background:rgba(10,10,10,0.98);z-index:250;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;backdrop-filter:blur(20px)}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{font-family:var(--fh);font-size:clamp(2rem,8vw,3.5rem);letter-spacing:0.05em;color:var(--cream);text-decoration:none;transition:color 0.2s}
+    .mobile-menu a:hover{color:var(--accent)}
+    .mobile-menu .mob-cta{background:var(--accent);color:#fff!important;padding:0.7rem 2.2rem;border-radius:100px}
+    @media(max-width:960px){.hamburger{display:flex}.nav-links{display:none!important}}
   </style>
 </head>
 <body>
@@ -87,7 +107,15 @@
       <li><a href="blog.html">Blog</a></li>
       <li><a href="contact.html" class="nav-cta active">Work With Me</a></li>
     </ul>
+
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" onclick="closeMenu()">About</a>
+    <a href="services.html" onclick="closeMenu()">Services</a>
+    <a href="blog.html" onclick="closeMenu()">Blog</a>
+    <a href="contact.html" class="mob-cta" onclick="closeMenu()">Work With Me</a>
+  </div>
 
   <div class="contact-layout">
     <div class="contact-left">
@@ -206,6 +234,17 @@
         form.removeEventListener('submit', arguments.callee);
         form.submit();
       }
+    });
+  </script>
+
+  <script>
+    const hamburger=document.getElementById('hamburger');
+    const mobileMenu=document.getElementById('mobileMenu');
+    function closeMenu(){hamburger.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow='';}
+    hamburger.addEventListener('click',()=>{
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';
     });
   </script>
 </body>
