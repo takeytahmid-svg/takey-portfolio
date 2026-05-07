@@ -197,9 +197,7 @@
         });
 
         if (res.ok) {
-          form.style.display = 'none';
-          success.style.display = 'block';
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          window.location.href = '/thank-you.html';
         } else {
           throw new Error('Server error');
         }
